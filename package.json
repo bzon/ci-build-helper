@@ -1,10 +1,11 @@
 {
   "name": "ci-build-helper",
-  "version": "0.1.0",
+  "version": "0.2.0",
+  "mavenGroup": "com.just.for.test",
   "description": "A helper script that provides functions and parameters for NPM plugins used for Continuous Integration builds.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "node_modules/.bin/istanbul cover node_modules/.bin/_mocha -- -- -u exports -R spec test/*-test.js"
   },
   "repository": {
     "type": "git",
@@ -26,5 +27,10 @@
   "homepage": "https://github.com/bzon/node-ci-build-helper#readme",
   "dependencies": {
     "yargs": "^8.0.1"
+  },
+  "devDependencies": {
+    "istanbul": "^0.4.5",
+    "mocha": "^3.3.0",
+    "should": "^11.2.1"
   }
 }

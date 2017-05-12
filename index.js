@@ -3,20 +3,6 @@
 const argv = require('yargs').argv;
 const pkgProperties = require(process.cwd() + '/package.json');
 
-function isSnapshot() {
-    if (/^[0-9].[0-9].[0-9]-SNAPSHOT$/.test(pkgProperties.version)) {
-        return true;
-    }
-    return false;
-}
-
-function isRelease() {
-    if (/^[0-9].[0-9].[0-9]$/.test(pkgProperties.version)) {
-        return true;
-    }
-    return false;
-}
-
 module.exports = {
 
     /**
@@ -62,7 +48,21 @@ module.exports = {
     /**
      * Nexus Maven properties
      */
-    setMavenRepo: function() {
+    isRelease: function(version = pkgProperties.version) {
+        if (/^[0-9].[0-9].[0-9]$/.test(version)) {
+            return true;
+        }
+        return false;
+    },
+
+    isSnapshot: function(version = pkgProperties.version) {
+        if (/^[0-9].[0-9].[0-9]-SNAPSHOT$/.test(version)) {
+            return true;
+        }
+        return false;
+    },
+
+    setMavenRepo: function(version = pkgProperties.version) {
         const nexusUsername = argv.nexusUsername || process.env.NEXUS_USER || 'deployment'
         const nexusPassword = argv.nexusPassword || process.env.NEXUS_PASSWORD || 'deployment123'
         const nexusHost = argv.nexusHost || 'localhost:8081/nexus'
@@ -76,27 +76,24 @@ module.exports = {
             url: nexusUrl + '/content/repositories/releases'
         }
 
-        if (isSnapshot()) {
+        if (this.isSnapshot(version)) {
             return snapshotRepo;
         }
-        else if (isRelease()){
+        else if (this.isRelease(version)){
             return releaseRepo;
         }
         else {
-            console.log(this.artifactVersion + " is not a valid version in package.json!");
-            process.exit(1);
+            return;
         }
     },
 
     /**
      * A valid version is always a snapshot version for CI builds.
      */
-    isValidSnapshotVersion: function() {
-        if (isSnapshot()) {
-            console.log(build.artifactVersion + ' snapshot version is valid..');
+    isValidSnapshotVersion: function(version = pkgProperties.version) {
+        if (this.isSnapshot(version)) {
             return true;
         }
-        console.log(build.artifactVersion + ' snapshot version is invalid. It must be in the format of [0-9].[0-9].[0-9]-SNAPSHOT ..');
         return false;
     }
 
