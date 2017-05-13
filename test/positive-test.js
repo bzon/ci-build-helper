@@ -15,7 +15,7 @@ describe('Positive Properties Test', function () {
         assert.equal(repo.id, 'releases');
     });
 
-    it('1.1.0-SNAPSHOT version should return the release maven repository', function() {
+    it('1.1.0-SNAPSHOT version should return the snapshot maven repository', function() {
         const repo = build.setMavenRepo('1.1.0-SNAPSHOT');
         assert.equal(repo.id, 'snapshots');
     });

@@ -5,11 +5,11 @@
   "description": "A helper script that provides functions and parameters for NPM plugins used for Continuous Integration builds.",
   "main": "index.js",
   "scripts": {
-    "test": "node_modules/.bin/istanbul cover node_modules/.bin/_mocha -- -- -u exports -R spec test/*-test.js"
+    "test": "istanbul cover node_modules/.bin/_mocha -- -R spec test/*-test.js"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/bzon/node-ci-build-helper.git"
+    "url": "git+https://github.com/bzon/ci-build-helper.git"
   },
   "keywords": [
     "ci",
@@ -22,9 +22,9 @@
   "author": "John Bryan Sazon <bryansazon@hotmail.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/bzon/node-ci-build-helper/issues"
+    "url": "https://github.com/bzon/ci-build-helper/issues"
   },
-  "homepage": "https://github.com/bzon/node-ci-build-helper#readme",
+  "homepage": "https://github.com/bzon/ci-build-helper#readme",
   "dependencies": {
     "yargs": "^8.0.1"
   },
