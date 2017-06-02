@@ -49,14 +49,14 @@ module.exports = {
      * Nexus Maven properties
      */
     isRelease: function(version = pkgProperties.version) {
-        if (/^[0-9].[0-9].[0-9]$/.test(version)) {
+        if (/^[0-9]+.[0-9]+.[0-9]+$/.test(version)) {
             return true;
         }
         return false;
     },
 
     isSnapshot: function(version = pkgProperties.version) {
-        if (/^[0-9].[0-9].[0-9]-SNAPSHOT$/.test(version)) {
+        if (/^[0-9]+.[0-9]+.[0-9]+-SNAPSHOT$/.test(version)) {
             return true;
         }
         return false;
