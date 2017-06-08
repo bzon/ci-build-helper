@@ -1,6 +1,6 @@
 {
   "name": "ci-build-helper",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "mavenGroup": "com.just.for.test",
   "description": "A helper script that provides functions and parameters for NPM plugins used for Continuous Integration builds.",
   "main": "index.js",

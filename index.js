@@ -26,7 +26,7 @@ module.exports = {
         login: argv.sonarLoginToken || process.env.SONAR_LOGIN,
         projectKey: argv.sonarProjectKey || pkgProperties.name + ':' + pkgProperties.mavenGroup,
         projectName: argv.sonarProjectName || pkgProperties.name,
-        projectVersion: process.env.BUILD_NUMBER || argv.sonarProjectVersion || pkgProperties.version,
+        projectVersion: argv.sonarProjectVersion || process.env.BUILD_NUMBER || pkgProperties.version,
         sources: argv.sonarSources || 'src',
         sourceEncoding: argv.sonarSourceEncoding || 'UTF-8',
         javascript: {
