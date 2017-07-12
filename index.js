@@ -24,6 +24,7 @@ module.exports = {
             mode: argv.sonarAnalysisMode || process.env.SONAR_ANALYSIS_MODE || 'preview'
         },
         login: argv.sonarLoginToken || process.env.SONAR_LOGIN,
+        password: argv.sonarPassword,
         projectKey: argv.sonarProjectKey || pkgProperties.name + ':' + pkgProperties.mavenGroup,
         projectName: argv.sonarProjectName || pkgProperties.name,
         projectVersion: argv.sonarProjectVersion || process.env.BUILD_NUMBER || pkgProperties.version,
