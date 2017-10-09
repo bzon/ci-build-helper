@@ -30,6 +30,7 @@ module.exports = {
         projectVersion: argv.sonarProjectVersion || process.env.BUILD_NUMBER || pkgProperties.version,
         sources: argv.sonarSources || 'src',
         sourceEncoding: argv.sonarSourceEncoding || 'UTF-8',
+        branch: argv.sonarBranch,
         javascript: {
             lcov: {
                 reportPath: argv.javascriptLcovReportPath || 'coverage/lcov.info'
