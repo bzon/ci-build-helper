@@ -44,7 +44,21 @@ module.exports = {
                 path: argv.sonarReportExportPath || 'sonar-report.json'
             }
         },
-        exclusions: argv.sonarExclusions || '**/jquery**.*,**/bootstrap**.*,**/**.min.*'
+        exclusions: argv.sonarExclusions || '**/jquery**.*,**/bootstrap**.*,**/**.min.*',
+        gitlab: {
+            api_version: "v4",
+            ref_name: argv.sonarGitlabRefName,
+            project_id: argv.sonarGitlabProjectId,
+            commit_sha: argv.sonarGitlabCommitSha,
+            only_issue_from_commit_file: argv.sonarGitlabonlyIssueFromCommitFile || true,
+            comment_no_issue: argv.sonarGitlabCommentNoIssue || true,
+            unique_issue_per_inline: argv.sonarGitlabUniqueIssuePerInline || true,
+            url: argv.sonarGitlabUrl,
+            user_token: argv.sonarGitlabUserToken,
+            ping_user: argv.sonarGitlabPingUser || true,
+            failure_notification_mode: argv.sonarGitlabFailureNotificationMode || "commit-status",
+            build_init_state: argv.sonarGitlabBuildInitState || "pending"
+        }
     },
 
     /**
